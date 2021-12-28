@@ -48,6 +48,7 @@ public:
 	void setBacklight(uint8_t new_val);				// alias for backlight() and nobacklight()
 	void load_custom_character(uint8_t char_num, uint8_t *rows);	// alias for createChar()
 	void printstr(const char[]);
+	void print(const char ch);
 
 private:
 	void init_priv();

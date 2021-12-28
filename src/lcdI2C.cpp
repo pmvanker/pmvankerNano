@@ -29,7 +29,7 @@ LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t bus, uint8_t lcd_Addr, uint8_t lcd_
 	_Addr = lcd_Addr;
 	_cols = lcd_cols;
 	_rows = lcd_rows;
-	_backlightval = LCD_NOBACKLIGHT;
+	_backlightval = LCD_BACKLIGHT;
 	_displaymode = LCD_ENTRYLEFT | LCD_ENTRYSHIFTDECREMENT;
 	_displaycontrol = LCD_DISPLAYON | LCD_CURSORON | LCD_BLINKOFF;
 	_displayfunction = LCD_8BITMODE | LCD_1LINE | LCD_5x8DOTS;
@@ -231,7 +231,14 @@ void LiquidCrystal_I2C::write4bits(uint8_t value) {
 }
 
 void LiquidCrystal_I2C::expanderWrite(uint8_t _data){
-	write(_data);
+	if(_backlightval == LCD_BACKLIGHT)
+	{
+		write(_data | LCD_BACKLIGHT);
+	}
+	else
+	{
+		write(_data);
+	}
 }
 
 void LiquidCrystal_I2C::pulseEnable(uint8_t _data){
@@ -271,13 +278,17 @@ void LiquidCrystal_I2C::setBacklight(uint8_t new_val){
 	}
 }
 
+void LiquidCrystal_I2C::print(const char ch)
+{
+	send(ch,1);
+}
 void LiquidCrystal_I2C::printstr(const char c[]){
 	//This function is not identical to the function used for "real" I2C displays
 	//it's here so the user sketch doesn't have to be changed
 	int i;
 	for(i=0;c[i];i++)
 	{
-		send(c[i],1);
+		print(c[i]);
 	}
 }
 

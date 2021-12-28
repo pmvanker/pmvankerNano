@@ -41,12 +41,17 @@ int main() {
 
 #ifdef LCD_16X2
 	LiquidCrystal_I2C lcd(1, 0x27, 16, 2);
-	lcd.setCursor(0,0);
-	lcd.printstr("pmvanker");
-	lcd.setCursor(0,1);
-	lcd.printstr("like ,shr, sub");
 	lcd.backlight();
+	lcd.setCursor(0,0);
+	lcd.print('P');
+	lcd.print('R');
+	lcd.print('A');
+	lcd.print('F');
+	lcd.print('U');
+	lcd.print('L');
 
+	lcd.setCursor(0,1);
+	lcd.printstr("SUBSCRIBE");
 
 #endif
 
