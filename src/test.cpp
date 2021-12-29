@@ -44,14 +44,22 @@ int main() {
 	lcd.backlight();
 	lcd.setCursor(0,0);
 	lcd.print('P');
+	std::this_thread::sleep_for(std::chrono::milliseconds(250));
 	lcd.print('R');
+	std::this_thread::sleep_for(std::chrono::milliseconds(250));
 	lcd.print('A');
+	std::this_thread::sleep_for(std::chrono::milliseconds(250));
 	lcd.print('F');
+	std::this_thread::sleep_for(std::chrono::milliseconds(250));
 	lcd.print('U');
+	std::this_thread::sleep_for(std::chrono::milliseconds(250));
 	lcd.print('L');
+	std::this_thread::sleep_for(std::chrono::milliseconds(250));
 
 	lcd.setCursor(0,1);
 	lcd.printstr("SUBSCRIBE");
+	std::this_thread::sleep_for(std::chrono::seconds(5));
+	lcd.clear();
 
 #endif
 
